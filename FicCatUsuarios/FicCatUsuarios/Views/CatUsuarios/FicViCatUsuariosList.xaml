@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="FicCatUsuarios.Views.CatUsuarios.FicViCatUsuariosList">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Litas Estatus" Command="{Binding FicMetListEstatusCommand}" />
+        <ToolbarItem Name="Lista copntraseñas" Command="{Binding FicMetListcopntraseñasCommand}" />
+        <ToolbarItem Name="Nuevo usuario" Command="{Binding FicMetNewCommand}" />
+        <ToolbarItem Name="Editar usuario" Command="{Binding FicMetUpdateCommand}" />
+        <ToolbarItem Name="Detalle usuario" Command="{Binding FicMetDetalleCommand}" />
+        <ToolbarItem 
+            Name="Borrar usuario"
+            Clicked="FicMetDeleteCommand">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, iOS" Value="ic_delete" />
+                    <On Platform="UWP" Value="Assets/ic_delete.png" />
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<StackLayout Margin="10" Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
+                <StackLayout  HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                    <Label Text="IdPersona : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Edificio.IdPersona}"/>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                    <Label Text="NumControl : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Edificio.NumControl}"/>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                    <Label Text="Nombre : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Edificio.Nombre}"/>
+                </StackLayout>
+            </StackLayout>-->
+
+            <SearchBar   
+                HorizontalOptions="FillAndExpand"
+                Placeholder="Buscar informacion.."
+                PlaceholderColor="Red"
+                x:Name="FicSearchBar"/>
+
+            <syncfusion:SfDataGrid
+                VerticalOptions="FillAndExpand"
+                ColumnSizer="Star"
+                AutoGenerateColumns="False"
+                AllowSorting="False"
+                ItemsSource="{Binding FicSfDataGrid_ItemSource_CatEdificios}"
+                SelectedItem="{Binding FicSfDataGrid_SelectItem_CatEdificios}"
+                SelectionMode="Single"
+                x:Name="dataGrid">
+                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                    <syncfusion:GridTextColumn HeaderText="IdUsuario" MappingName="IdUsuario" />
+                    <syncfusion:GridTextColumn HeaderText="IdPersona" MappingName="IdPersona" />
+                    <syncfusion:GridTextColumn HeaderText="Expira" MappingName="Expira" />
+                    <syncfusion:GridTextColumn HeaderText="Conectado" MappingName="Conectado" />
+                    <syncfusion:GridTextColumn HeaderText="FechaAlta"  MappingName="FechaAlta" />
+                    <syncfusion:GridTextColumn HeaderText="Usuario"  MappingName="Usuario" />
+                    <syncfusion:GridTextColumn HeaderText="NumIntentos"  MappingName="NumIntentos" />
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="FicCatUsuarios.Views.SegExpiraClaves.FicViSegExpiraClavesList">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Nuevo Contraseña" Command="{Binding FicMetNewCommand}" />
+        <ToolbarItem Name="Editar Contraseña" Command="{Binding FicMetUpdateCommand}" />
+        <ToolbarItem Name="Detalle Contraseña" Command="{Binding FicMetDetalleCommand}" />
+        <ToolbarItem 
+            Name="Borrar Contraseña"
+            Clicked="FicMetDeleteCommand">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android, iOS" Value="ic_delete" />
+                    <On Platform="UWP" Value="Assets/ic_delete.png" />
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Name="Back" Command="{Binding BackNavgCommand}"/>
+    </ContentPage.ToolbarItems>
+    
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="10" Padding="10" Orientation="Vertical" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray">
+                <StackLayout  HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                    <Label Text="IdUsuario : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Edificio.IdUsuario}"/>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                    <Label Text="Usuario : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Edificio.Usuario}"/>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                    <Label Text="Expira : " FontAttributes="Bold"/>
+                    <Label Text="{Binding Edificio.Expira}"/>
+                </StackLayout>
+            </StackLayout>
+
+            <SearchBar   
+                HorizontalOptions="FillAndExpand"
+                Placeholder="Buscar informacion.."
+                PlaceholderColor="Red"
+                x:Name="FicSearchBar"/>
+
+            <syncfusion:SfDataGrid
+                VerticalOptions="FillAndExpand"
+                ColumnSizer="Star"
+                AutoGenerateColumns="False"
+                AllowSorting="False"
+                ItemsSource="{Binding FicSfDataGrid_ItemSource_CatEdificios}"
+                SelectedItem="{Binding FicSfDataGrid_SelectItem_CatEdificios}"
+                SelectionMode="Single"
+                x:Name="dataGrid">
+                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                    <syncfusion:GridTextColumn HeaderText="IdClave" MappingName="IdClave" />
+                    <syncfusion:GridTextColumn HeaderText="FechaExpiraIni" MappingName="FechaExpiraIni" />
+                    <syncfusion:GridTextColumn HeaderText="FechaExpiraFin"  MappingName="FechaExpiraFin" />
+                    <syncfusion:GridTextColumn HeaderText="Actual"  MappingName="Actual" />
+                    <syncfusion:GridTextColumn HeaderText="ClaveAutoSys"  MappingName="ClaveAutoSys" />
+                    <syncfusion:GridTextColumn HeaderText="Clave"  MappingName="Clave" />
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

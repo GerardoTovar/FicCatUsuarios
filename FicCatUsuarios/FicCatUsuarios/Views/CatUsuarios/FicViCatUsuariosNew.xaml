@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+             xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
+             x:Class="FicCatUsuarios.Views.CatUsuarios.FicViCatUsuariosNew">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Name="Back"
+            Command="{Binding BackNavgCommand}">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                VerticalOptions="StartAndExpand"
+                Padding="20">
+
+                <!--<syncfusion:SfAutoComplete HeightRequest="40" x:Name="FicPersona" DisplayMemberPath="name" DataSource="{Binding FicSourceAutocompletePersonas}" SelectedItem="AutocompleteSelectedPersona">
+                    <syncfusion:SfAutoComplete.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Binding NombrePersona"></Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </syncfusion:SfAutoComplete.ItemTemplate>
+                </syncfusion:SfAutoComplete>-->
+                <Label Text="Persona"/>
+                <StackLayout VerticalOptions="Start" HorizontalOptions="Start">
+                    <syncfusion:SfAutoComplete HeightRequest="40" x:Name="autoComplete" DisplayMemberPath="NombreCompleto" DataSource="{Binding FicSourceAutocompletePersonas}" SelectedItem="{Binding AutocompleteSelectedPersona}"/>
+                </StackLayout>
+
+                <Label Text="Expira: "/>
+                <Switch IsToggled="{Binding Edificio.Expira}"></Switch>
+                
+                <Label Text="Conectado: "/>
+                <Switch IsToggled="{Binding Edificio.Conectado}"></Switch>
+
+                <Label Text="FechaAlta"/>
+                <DatePicker DateSelected="DatePicker_OnDataSelected" HorizontalOptions="Start"/>
+
+                <Label Text="NumIntentos"/>
+                <numeric:SfNumericUpDown MaximumDecimalDigits="0" Minimum="0" Value="{Binding Edificio.NumIntentos}"></numeric:SfNumericUpDown>
+                <!--<Entry Text="{Binding Edificio.NumIntentos}"/>--> 
+
+                <Label Text="Usuario"/>
+                <Entry Text="{Binding Edificio.Usuario}"/>
+
+                <Label Text="Activo: "/>
+                <Switch IsToggled="{Binding Edificio.Activo}"></Switch>
+
+                <Label Text="Borrado: "/>
+                <Switch IsToggled="{Binding Edificio.Borrado}"></Switch>
+
+                <Button Text="Agregar"  Command="{Binding FicMetAddCommand}"/>
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FicCatUsuarios.Views.SegExpiraClaves.FicViSegExpiraClavesNew">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Name="Back"
+            Command="{Binding BackNavgCommand}">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                VerticalOptions="StartAndExpand"
+                Padding="20">
+
+                <!--<Label Text="IdUsuario"/>
+                <Entry Text="{Binding Edificio.IdUsuario}"/>-->
+
+                <Label Text="FechaExpiraIni"/>
+                <DatePicker DateSelected="DatePicker_OnDataSelected" HorizontalOptions="Start"/>
+
+                <Label Text="FechaExpiraFin"/>
+                <DatePicker DateSelected="DatePicker_OnDataSelected2" HorizontalOptions="Start"/>
+
+                <Label Text="Actual: "/>
+                <Switch IsToggled="{Binding Edificio.Actual}"></Switch>
+
+                <Label Text="ClaveAutoSys: "/>
+                <Switch IsToggled="{Binding Edificio.ClaveAutoSys}"></Switch>
+
+                <Label Text="Clave"/>
+                <Entry Text="{Binding Edificio.Clave}"/>
+
+                <Label Text="Activo: "/>
+                <Switch IsToggled="{Binding Edificio.Activo}"></Switch>
+
+                <Label Text="Borrado: "/>
+                <Switch IsToggled="{Binding Edificio.Borrado}"></Switch>
+
+                <Button Text="Agregar"  Command="{Binding FicMetAddCommand}"/>
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
